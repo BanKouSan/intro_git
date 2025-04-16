@@ -6,25 +6,91 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
-## R Markdown
+# 1. Exploratory Data Analysis(探索的データ解析)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+-   本章では探索的データ解析(EDA)で必要な仮定、原則、技術を紹介
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+1.  EDA Introduction(EDA導入)
+2.  EDA Assumptions(仮定)
+3.  EDA Techniques(技術)
+4.  EDA Case Studies(ケーススタディ)
 
-```{r cars}
-summary(cars)
-```
+## [1.1. EDA Introduction(導入)](https://www.itl.nist.gov/div898/handbook/eda/section1/eda1.htm)
 
-## Including Plots
+- **Summary**
 
-You can also embed plots, for example:
+-   探索的データ解析とは?
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+-   どのようにして始まったか?
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+-   どこでどのように発生したか?
+
+-   他のデータ分析方法とどのように異なるか?
+
+    -   古典的、ベイズ等との比較
+
+-   EDAとは統計的グラフと同義?
+
+-   EDA中の統計グラフの役割は?
+
+-   これらおよび関連する疑問に本章では解説していく
+
+-   EDA仮定、原理、技術に必要な参照枠組みを解説
+
+1.  What is EDA?
+2.  EDA versus Classical and Bayesian
+    1.  Models
+    2.  Focus
+    3.  Techniques
+    4.  Rigor
+    5.  Data Treatment
+    6.  Assumptions
+3.  EDA vs Summary
+4.  EDA Goals
+5.  The Role of Graphics
+6.  An EDA/Graphics Example
+7.  General Problem Categories
+
+## [1.1.1. What is EDA?](https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm)
+
+- **Approach**
+
+- EDAとは以下の考えを有する手法
+    1. データセットへの洞察を最大化
+    2. 隠された構造を明らかに
+    3. 重要変数のあぶり出し
+    4. 外れ値、異常値の検出
+    5. 前提となる仮定の検定
+    6. 簡単なモデルの構築
+    7. 最適な因子設定の決定
+
+- **Focus**
+- EDAはデータ分析をどう実行するかという態度・哲学
+
+- **Philosophy**
+- EDAと統計的グラフは近いが同じ意味ではない
+  - 以下etc.
+
+- **History**: 割愛
+- **Techniques**
+- ほとんどのEDA技法
+  - グラフといくつかの定量技法の併用
+   1. 生データをプロット
+     - ヒストグラム、バイヒストグラム、確率プロット、ラグプロット、ブロックプロット、ユーデンプロット等
+   2. 簡単な統計量のプロット
+     - 平均プロット、標準偏差プロット、ボックスプロット、主効果プロット等
+   3. 1ページに複数プロット配置等、人間の自然なパターン認識能力を最大限に生かすようにする
+
+
+## 1.1.2. 探索的データ解析は古典データ分析とどう違うか
+
+- **データ分析アプローチ**
+
+    
+    
+
