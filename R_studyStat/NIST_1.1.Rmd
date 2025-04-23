@@ -222,4 +222,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ## [1.1.6. EDA/グラフの例](https://www.itl.nist.gov/div898/handbook/eda/section1/eda16.htm)
 
 - **Anscombeの例(有名な例らしい)**
+- グラフがデータセットに対して洞察を与える古典的な例
+
+```{r 1_1_6_Anscombe, echo=FALSE}
+datatbl <- read.table("./sampledatafiles/ANSCOMBE.DAT", skip=25)
+```
 
