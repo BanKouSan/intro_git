@@ -6,7 +6,10 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library(dplyr)
 library(ggplot2)
+library(gridExtra)
+library(flextable)
 
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -224,7 +227,66 @@ knitr::opts_chunk$set(echo = TRUE)
 - **Anscombeの例(有名な例らしい)**
 - グラフがデータセットに対して洞察を与える古典的な例
 
-```{r 1_1_6_Anscombe, echo=FALSE}
-datatbl <- read.table("./sampledatafiles/ANSCOMBE.DAT", skip=25)
+```{r 1_1_6_Anscombe_stat, echo=FALSE}
+# データセットの読み込み
+df <- read.table("./sampledatafiles/ANSCOMBE.DAT", skip=25)
+
+# dfのカラム名を設定
+colnames(df) <- c("X1", "Y1","X2","Y2","X3","Y3","X4","Y4")
+
+# 統計量の項目名をベクトルで命名
+items <- c("N", "Mean of X", "Mean of Y", "Intercept", "Slope", "Residual standard deviation", "Correlation")
+
+# reg1 <- summary(lm(formula=Y1~X1, data=df))
+# reg1$coefficients[1]
+
+# 各X, Y組み合わせの統計量算出しベクトルで返す関数
+calcstat <- function(x,y){
+  reg <- summary(lm(formula=y~x))
+  n <- length(x)
+  mean_x <- mean(x)
+  mean_y <- mean(y)
+  intcpt <- reg$coefficients[1]
+  slp <- reg$coefficients[2]
+  ressd <- reg$sigma
+  cor_xy <- cor(x,y)
+  results <- c(n, mean_x, mean_y, intcpt, slp, ressd, cor_xy)
+  return (results)
+}
+
+x1y1_rst <- calcstat(df$X1, df$Y1)
+x2y2_rst <- calcstat(df$X2, df$Y2)
+x3y3_rst <- calcstat(df$X3, df$Y3)
+x4y4_rst <- calcstat(df$X4, df$Y4)
+
+
+tbl_df <- data.frame(items,x1y1_rst,x2y2_rst,x3y3_rst,x4y4_rst)
+tbl_df[,2:5] <- round(tbl_df[,2:5],3)
+
+dtbl <- flextable(df) %>% colformat_double(., digits=2)
+dtbl
+
+stat_tbl <- flextable(tbl_df) %>% autofit() %>% colformat_double(., i=1, digits=0)
+
+stat_tbl
+
+
+
+```
+
+```{r 1_1_6_Anscombe_plot, echo=FALSE}
+pltfunc <- function(x,y,title){
+  plt <- ggplot(data=df, aes(x=x,y=y)) + geom_point(size=2) +
+    geom_smooth(formula=y~x, method=lm) + labs(title=title, x="X", y="Y")
+  return (plt)  
+}
+
+p1 <- pltfunc(df$X1, df$Y1,"exp1")
+p2 <- pltfunc(df$X2, df$Y2,"exp2")
+p3 <- pltfunc(df$X3, df$Y3,"exp3")
+p4 <- pltfunc(df$X4, df$Y4,"exp4")
+
+plts <- gridExtra::grid.arrange(p1,p2,p3,p4)
+
 ```
 
