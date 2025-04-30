@@ -227,6 +227,9 @@ knitr::opts_chunk$set(echo = TRUE)
 - **Anscombeの例(有名な例らしい)**
 - グラフがデータセットに対して洞察を与える古典的な例
 
+### データセット(set1,2,3 and 4)と統計量
+
+
 ```{r 1_1_6_Anscombe_stat, echo=FALSE}
 # データセットの読み込み
 df <- read.table("./sampledatafiles/ANSCOMBE.DAT", skip=25)
@@ -274,6 +277,12 @@ stat_tbl
 
 ```
 
+- 4データセットとも統計量はほぼ同じで区別がつかない
+  - 平均、回帰直線、線形回帰の残差標準偏差、相関係数
+- 続いてグラフ化(散布図)
+
+### グラフ技法
+
 ```{r 1_1_6_Anscombe_plot, echo=FALSE}
 pltfunc <- function(x,y,title){
   plt <- ggplot(data=df, aes(x=x,y=y)) + geom_point(size=2) +
@@ -290,3 +299,7 @@ plts <- gridExtra::grid.arrange(p1,p2,p3,p4)
 
 ```
 
+- 散布図により比較
+   1. 明らかに線形モデルが適当
+     - 外れ値はない
+   2. 
