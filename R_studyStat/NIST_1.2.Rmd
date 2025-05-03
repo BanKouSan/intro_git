@@ -1,0 +1,19 @@
+---
+title: "NIST_1.2"
+author: "Sakaguchi"
+date: "2025-05-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(flextable)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+# EDA Assumptions
+- **Summary**
