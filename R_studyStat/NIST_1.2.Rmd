@@ -84,5 +84,12 @@ knitr::opts_chunk$set(echo = TRUE)
 - 4つの仮定が当てはまる場合
   - プロセスは科学的・エンジニアリング的に妥当な結論を得る
 - 4つの仮定が当てはまらない場合
-  - 
+  - プロセスはドリフト(位置、変動、分布等の)
+  - 予測可能ではなく、**Out Of Control**
+- 位置、変動、分布の推定のみで単純にプロセスの特徴づけ
+  - 裏付け乏しく、実験再現不可能な工学的結論が導出されうる
 
+## [1.2.3.Techniques for Testing Assumptions](https://www.itl.nist.gov/div898/handbook/eda/section2/eda23.htm)
+
+- **前提条件の検定--科学的工学的妥当性の保証に役立つ**
+- 
