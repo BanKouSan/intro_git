@@ -92,4 +92,24 @@ knitr::opts_chunk$set(echo = TRUE)
 ## [1.2.3.Techniques for Testing Assumptions](https://www.itl.nist.gov/div898/handbook/eda/section2/eda23.htm)
 
 - **前提条件の検定--科学的工学的妥当性の保証に役立つ**
-- 
+- 最終的な科学/工学的結論の妥当性と基礎となる単変数の仮定が表裏一体
+  - 前述の4つの仮定は当然一つ一つ検定される必要あり
+
+- 以下のEDA技術はシンプル、効果的、強力に基礎となる仮定の検定を可能
+   1. run sequence plot(Yi vs i)
+   2. lag plot(Yi vs Yi-1)
+   3. histogram(count vs subgroups of Y)
+   4. normal probability plot(ordered Y vs theoretical ordered Y)
+- [**4プロット**]{style="color: red"}
+  - 下に例(左: 正規乱数500個、右: 非正規U字型分布+外れ値少々)
+
+:::: {.columns}
+::: {.column}
+![](https://www.itl.nist.gov/div898/handbook/eda/gif/randn4p.gif)
+:::
+::: {.column}
+![](https://www.itl.nist.gov/div898/handbook/eda/gif/lew4p.gif)
+:::
+
+## [1.2.4. Interpretation of 4-Plot](https://www.itl.nist.gov/div898/handbook/eda/section2/eda24.htm)
+
