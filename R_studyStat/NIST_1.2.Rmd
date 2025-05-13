@@ -144,3 +144,5 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## [1.2.5. Consequences](https://www.itl.nist.gov/div898/handbook/eda/section2/eda25.htm)
 
+- **仮定が成立しない場合**
+- 
