@@ -162,4 +162,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## [1.2.5.1. Consequences of Non-Randomness](https://www.itl.nist.gov/div898/handbook/eda/section2/eda251.htm)
 
-- 
+- **無作為性という仮定**
+- 何度も言いますが以下
+   1. 無作為抽出
+   2. 固定の分布からなること
+   3. 位置固定の分布を持つ
+   4. 固定変動の分布を持つ
+- なかでも無作為性の仮定は最も重大だが検定難しいもの
