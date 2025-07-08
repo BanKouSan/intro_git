@@ -534,8 +534,8 @@ Interpretation of 4-Plot</a></h2>
 <li><strong>プロットを仮定の検定に適用</strong></li>
 <li>ランシーケンスプロット
 <ul>
-<li>フラットでドリフトない場合、固定位置の仮定維持</li>
-<li>垂直方向の広がりがほぼ同じ程度の場合、固定変動の仮定維持</li>
+<li>フラットでドリフトない場合、固定位置の仮定を維持</li>
+<li>垂直方向の広がりがほぼ同じ程度の場合、固定変動の仮定を維持</li>
 </ul></li>
 <li>ラグプロット
 <ul>
@@ -557,6 +557,130 @@ Interpretation of 4-Plot</a></h2>
 </div><div id="consequences" class="section level2">
 <h2><a href="https://www.itl.nist.gov/div898/handbook/eda/section2/eda25.htm">1.2.5.
 Consequences</a></h2>
+<ul>
+<li><strong>仮定が成立しない場合</strong></li>
+<li>基礎となる仮定不成立の場合に出来ることは?
+<ul>
+<li>是正措置、積極的に対応する方法は?
+<ul>
+<li>仮定の検定を、プロセス理解の為の枠組みとすること</li>
+<li>表面化しなかったかもしれないプロセスの重要な側面に対する洞察</li>
+</ul></li>
+</ul></li>
+<li><strong>最初の目標: 正しく妥当な科学的結論</strong></li>
+<li>通常、中間の目標を有する
+<ul>
+<li>よくフィットしたモデル</li>
+<li>現実的なパラメータ推定</li>
+</ul></li>
+<li>常に「何がプロセスを動かしているか」を理解し「感じる」とう目標を含む</li>
+<li>続く章で以下を議論
+<ol style="list-style-type: decimal">
+<li>非ランダムの結果</li>
+<li>位置パラメータ固定でない場合</li>
+<li>変動固定でない場合</li>
+<li>分布に関する仮定関連の結論</li>
+</ol></li>
+</ul>
+</div><div id="consequences-of-non-randomness" class="section level2">
+<h2><a href="https://www.itl.nist.gov/div898/handbook/eda/section2/eda251.htm">1.2.5.1.
+Consequences of Non-Randomness</a></h2>
+<ul>
+<li><p><strong>無作為性という仮定</strong></p></li>
+<li><p>何度も言いますが以下</p>
+<ol style="list-style-type: decimal">
+<li>無作為抽出</li>
+<li>固定の分布からなること</li>
+<li>位置固定の分布を持つ</li>
+<li>固定変動の分布を持つ</li>
+</ol></li>
+<li><p>なかでも無作為性の仮定は最も重大だが検定難しいもの</p></li>
+<li><p><strong>非無作為の結果</strong>~無作為性という仮定が成立しない場合</p>
+<ol style="list-style-type: decimal">
+<li>通常の統計検定は全て無効</li>
+<li>広く用いられる統計から算出した不確かさも意味をなさない</li>
+<li>前提となる、許容範囲算出に必要な最小標本数も無意味</li>
+<li>簡単なモデル: y=constant+error、も無用</li>
+<li>パラメータ推定値も疑わしくなり、裏付け取れなくなる</li>
+</ol></li>
+<li><p><strong>自己相関に起因する非無作為性</strong></p>
+<ul>
+<li><p>具体的かつよく見られる非無作為の類型は自己相関</p>
+<ul>
+<li>YtとYt-kで相関</li>
+<li>時間依存の非無作為</li>
+</ul></li>
+<li><p>自己相関は、<a href="https://www.itl.nist.gov/div898/handbook/eda/section3/autocopl.htm">自己相関プロット</a>か
+<a href="https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm">ラグプロット</a>で検出可能</p></li>
+<li><p>もしデータの非無作為性が自己相関由来の場合</p>
+<ol style="list-style-type: decimal">
+<li>隣接データ値は関連がある可能性</li>
+<li>研究対象の現象では、独立したスナップショットがn個とは限らない</li>
+<li>ジャンクな外れ値が検出されないかもしれない</li>
+<li>情報に富んだ外れ値は検出されないかもしれない</li>
+</ol></li>
+</ul></li>
+</ul>
+</div><div id="consequences-of-non-fixed-location-parameter" class="section level2">
+<h2><a href="https://www.itl.nist.gov/div898/handbook/eda/section2/eda252.htm">1.2.5.2.
+Consequences of Non-Fixed Location Parameter</a></h2>
+<ul>
+<li><strong>位置の推定</strong>
+<ul>
+<li>位置の推定値は一般的に平均値
+<ul>
+<li><span class="math inline">\(\bar{Y} = \frac{1}{N}
+\sum_{i=1}^{N}{Y_i}\)</span></li>
+</ul></li>
+</ul></li>
+<li><strong>固定ではない位置についての結果</strong>
+<ul>
+<li>ランシーケンスプロットから、位置固定の仮説が支持されない場合、
+<ol style="list-style-type: decimal">
+<li>位置はおそらくドリフト有</li>
+<li>単一位置推定は意味をなさない</li>
+<li>位置推定量(例: 標本平均)の選択が最適ではない可能性</li>
+<li>通常不確かさを表す以下式が無効で、数値は楽観的に小さい可能性</li>
+</ol>
+<ul>
+<li><span class="math inline">\(s(\bar{Y}) = \frac{1}{\sqrt{N(N-1)}}
+\sqrt{\sum_{i=1}^{N}{(Y_i - \bar{Y})^2}}\)</span></li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>位置推定は弱い可能性</li>
+<li>位置推定は偏りある可能性</li>
+</ol></li>
+</ul></li>
+</ul>
+</div><div id="consequences-of-non-fixed-variation-parameter" class="section level2">
+<h2><a href="https://www.itl.nist.gov/div898/handbook/eda/section2/eda253.htm">1.2.5.3.
+Consequences of Non-Fixed Variation Parameter</a></h2>
+<ul>
+<li><strong>変動の推定</strong>
+<ul>
+<li>変動の推定は通常、標準偏差
+<ul>
+<li><span class="math inline">\(s_Y = \frac{1}{\sqrt{(N-1)}}
+\sqrt{\sum_{i=1}^{N}{(Y_i - \bar{Y})^2}}\)</span></li>
+</ul></li>
+</ul></li>
+<li><strong>固定変動ではない場合</strong>
+<ul>
+<li>ランシーケンスプロットが固定変動を支持しない場合
+<ol style="list-style-type: decimal">
+<li>変動はドリフトの可能性</li>
+<li>単一変動としての推定は意味をなさない</li>
+<li>変動推定は弱い可能性</li>
+<li>変動推定には偏りある可能性</li>
+</ol></li>
+</ul></li>
+</ul>
+</div><div id="consequences-related-to-distributional-assumptions" class="section level2">
+<h2><a href="https://www.itl.nist.gov/div898/handbook/eda/section2/eda254.htm">Consequences
+Related to Distributional Assumptions</a></h2>
+<ul>
+<li><h2 id="分布を分析"><strong>分布を分析</strong></h2></li>
+</ul>
 </div>
 </div>
 </div>

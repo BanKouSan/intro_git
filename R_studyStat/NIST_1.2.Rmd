@@ -208,6 +208,21 @@ knitr::opts_chunk$set(echo = TRUE)
      5. 位置推定は弱い可能性
      6. 位置推定は偏りある可能性
 
+## [1.2.5.3. Consequences of Non-Fixed Variation Parameter](https://www.itl.nist.gov/div898/handbook/eda/section2/eda253.htm)
 
-     
+- **変動の推定**
+  - 変動の推定は通常、標準偏差
+    - $s_Y = \frac{1}{\sqrt{(N-1)}} \sqrt{\sum_{i=1}^{N}{(Y_i - \bar{Y})^2}}$
+  
+- **固定変動ではない場合**
+  - ランシーケンスプロットが固定変動を支持しない場合
+     1. 変動はドリフトの可能性
+     2. 単一変動としての推定は意味をなさない
+     3. 変動推定は弱い可能性
+     4. 変動推定には偏りある可能性
+
+## [1.2.5.4. Consequences Related to Distributional Assumptions](https://www.itl.nist.gov/div898/handbook/eda/section2/eda254.htm)
+
+- **分布を分析**
+  - 
      
