@@ -676,10 +676,65 @@ Consequences of Non-Fixed Variation Parameter</a></h2>
 </ul></li>
 </ul>
 </div><div id="consequences-related-to-distributional-assumptions" class="section level2">
-<h2><a href="https://www.itl.nist.gov/div898/handbook/eda/section2/eda254.htm">Consequences
-Related to Distributional Assumptions</a></h2>
+<h2><a href="https://www.itl.nist.gov/div898/handbook/eda/section2/eda254.htm">1.2.5.4.
+Consequences Related to Distributional Assumptions</a></h2>
 <ul>
-<li><h2 id="分布を分析"><strong>分布を分析</strong></h2></li>
+<li><strong>分布を分析</strong>
+<ul>
+<li>科学者・技術者はよく「平均」を分布の「真ん中」として使用
+<ul>
+<li>位置推定量に平均のばらつき・ノイズが存在</li>
+<li>データの基本的な分布と本質的に関連している</li>
+<li>これらの事実はあまり広まっていない</li>
+</ul></li>
+<li>特定の分布の場合、平均はよい選択ではない</li>
+<li>任意の分布に対して、変動/ノイズを最小化する最適選択肢が存在
+<ul>
+<li>Ex) 中央値(median)、平均(mean)、またはその他</li>
+</ul></li>
+<li>先に分布を推定、その後分布に従い最適推定量を選択</li>
+<li>技術的にパラメータ推定量の変動は低減する結果となる
+<ul>
+<li>この手順をやらないよりも</li>
+</ul></li>
+</ul></li>
+<li><strong>ケーススタディ</strong>
+<ul>
+<li><a href="https://www.itl.nist.gov/div898/handbook/eda/section4/eda429.htm">airplane
+glass failure</a>の例
+<ul>
+<li>最適な分布を決定と、その分布に基づくパラメータ推定の実験</li>
+</ul></li>
+<li><a href="https://www.itl.nist.gov/div898/handbook/eda/section4/eda422.htm">uniform
+random numbers</a>の例
+<ul>
+<li>非正規分布に対してより適した中心性のパラメータを得る実験</li>
+</ul></li>
+<li>その他分布の仮定に伴う課題からなる結果を以下</li>
+</ul></li>
+<li><strong>分布</strong>
+<ol style="list-style-type: decimal">
+<li>分布が変化している可能性</li>
+<li>単一分布推定が意味をなさない(プロセス分布が変化の場合)</li>
+<li>分布は著しく非正規(正規分布とかなり違う分布)</li>
+<li>分布が未知のもの</li>
+<li>誤差の真の確率分布が未知のまま</li>
+</ol></li>
+<li><strong>モデル</strong>
+<ol style="list-style-type: decimal">
+<li>モデルが変化する可能性</li>
+<li>単一モデル推定は意味をなさないかも</li>
+<li>既定モデル Y = constant + error が妥当ではない</li>
+<li>既定のモデルが不十分の場合、より良いモデルの情報が未検出になる可能性</li>
+<li>決定論的モデルのフィットが甘い</li>
+<li>証明されたモデルに関する情報が検出されない</li>
+</ol></li>
+<li><strong>プロセス</strong>
+<ol style="list-style-type: decimal">
+<li>プロセスが制御状態にない</li>
+<li>プロセスは予想可能ではない</li>
+<li>プロセスはモデル化できない</li>
+</ol></li>
 </ul>
 </div>
 </div>

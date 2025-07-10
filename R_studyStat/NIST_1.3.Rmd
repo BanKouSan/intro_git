@@ -1,0 +1,43 @@
+---
+title: "NIST_1.3"
+author: "Sakaguchi"
+date: "2025-07-10"
+output: html_document
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(flextable)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+# [EDA Techniques](https://www.itl.nist.gov/div898/handbook/eda/section3/eda3.htm)
+
+- **Summary**
+  - データセットを収集後、探索的データ解析をどのように進めるか?
+  - あまたある技術の何に焦点を当てたらよいか?
+  - 期待するのはどのような結論か?
+  
+  - 本章
+    - EDA技術紹介を通してこれらの疑問に答え
+    - 各技術の詳細を記述
+    - グラフィカル、定量的な技術の両方に触れる
+    - EDAでは主にグラフ技法に重点
+
+- **第3章の目次**
+   1. [導入](https://www.itl.nist.gov/div898/handbook/eda/section3/eda31.htm)
+   2. [分析の議題](https://www.itl.nist.gov/div898/handbook/eda/section3/eda32.htm)
+   3. [グラフ技術: アルファベット順](https://www.itl.nist.gov/div898/handbook/eda/section3/eda33.htm)
+   4. [グラフ化技術: 課題分類](https://www.itl.nist.gov/div898/handbook/eda/section3/eda34.htm)
+   5. [定量手法: アルファベット順](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35.htm)
+   6. [確率分布](https://www.itl.nist.gov/div898/handbook/eda/section3/eda36.htm)
+
+
+## [1.3.1. Introduction](https://www.itl.nist.gov/div898/handbook/eda/section3/eda31.htm)
+
+- **グラフィカルと定量的手法**
+  - 
+
