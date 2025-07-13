@@ -3,6 +3,7 @@ title: "NIST_1.3"
 author: "Sakaguchi"
 date: "2025-07-10"
 output: html_document
+---
 
 ```{r setup, include=FALSE}
 library(dplyr)
@@ -10,7 +11,7 @@ library(ggplot2)
 library(gridExtra)
 library(flextable)
 
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
@@ -65,6 +66,83 @@ knitr::opts_chunk$set(echo = TRUE)
 ## [1.3.2. Analysis Questions](https://www.itl.nist.gov/div898/handbook/eda/section3/eda32.htm)
 
 - **EDA議題**
-  - 
-  
+  - 探索的データ解析が解答してきた課題は概ね以下
+     1. 代表値はなにか
+     2. 代表値の不確かさは
+     3. 数のセットによくフィットする分布は
+     4. パーセンタイルとは
+     5. 技術的修正は効果あるか
+     6. 因子がもつ効果は
+     7. 最重要の因子は
+     8. 異なる試験所から得られた測定が等価か
+     9. 応答変数と説明変数の集合を関連付ける最も適した関数は
+     10. 因子の最良設定は
+     11. 時間依存ノイズ由来のシグナルを分離可能か
+     12. 多変数データからの構造を抽出できるか
+     13. データに外れ値はあるか
 
+- **分析者は工学的問題に関連する課題を特定すべき**
+  - あらゆる分析の重要な初期段階
+    - 目下の工学的問題に対して上のどれが関連するかの特定
+      - 解答をしたい課題
+      - どの質問が目下の問題と関係ないか?
+    - これらの疑問のセットをまとめた後、重要度高い順に優先順位付け
+      - 集中力を維持するために非常に重要なステップ
+    - EDA技法はこれらの各質問に紐づいている
+      - いくつかのEDA技法は幅広くほぼ例外なく使用
+        - 散布図等
+    - 一方で、特定の質問に紐づいたEDA技法も数多く存在
+    - 関連する質問を明示的に特定しないと選択した場合
+      - 質問に固有のEDA技術を活用出来ない
+
+- **EDAアプローチの重点であるグラフ**
+  - ここでの疑問のほとんどは本章で取り上げる技術で解決可能
+  - [プロセスモデル](https://www.itl.nist.gov/div898/handbook/pmd/pmd.htm)と
+  [プロセス改善](https://www.itl.nist.gov/div898/handbook/pri/pri.htm)
+  の章でも上の疑問の多くに対処可能
+  - これら疑問は古典的統計学へのアプローチにも関連
+  - EDAとは何が違うか?
+    - EDAは洞察を得るためのグラフ技術に重点
+    - 古典的アプローチは定量的な検定に重点
+  - **分析者の多くはグラフと古典的定量的技法を併せて問題へ取り組む**
+
+
+## [1.3.4. Graphical Techniques: By Problem Category](https://www.itl.nist.gov/div898/handbook/eda/section3/eda34.htm)
+- カテゴリ毎に紹介
+  - 単変量y = c + e
+  - 時系列y = f(t) + e
+  - 1因子y = f(x) + e
+  - 多因子/比較y = f(xp,  x1,x2,...,xk) + e
+  - 多因子/スクリーニングy = f(x1,x2,x3,...,xk) + e
+  - 回帰y = f(x1,x2,x3,...,xk) + e
+  - ラボ間比較(y1,y2) = f(x) + e
+  - 多変量(y1,y2,...,yp)
+
+
+## [1.3.3.25. Run-Sequence Plot](https://www.itl.nist.gov/div898/handbook/eda/section3/runseqpl.htm)
+
+- **目的: 位置のシフト有無、スケール、外れ値の確認**
+  - ランシーケンスプロット(Chambers 1983)
+    - 単変数データセットを容易にグラフ的要約可能な方法
+    - 単変数データセット共通の仮定
+       1. 無作為性
+       2. 固定分布
+       3. 一貫した位置
+       4. 一貫したスケール
+    - これらに対してランシーケンスプロットが位置のシフト、スケール変化をきわめて明示的に示す
+    - 外れ値も容易に検出可能
+
+― **サンプルプロット: 最後1/3のデータが位置シフト**
+
+```{r run_sequence_sample, out.height=240, out.width=320,warning=FALSE, echo=TRUE}
+
+
+data <- read.table("./MAVRO.DAT", skip=25)
+x <- c(1:length(data$V1))
+plt <- ggplot(data=data, mapping=aes(x=x, y=V1)) + geom_point() + 
+  labs(title="1.3.3.25_Fig.1 PLOT Y", x="index", y="Transmittance") +
+  scale_y_continuous(breaks=seq(2.0010, 2.0030, 0.0004))
+plt
+```
+
+  
