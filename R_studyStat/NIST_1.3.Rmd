@@ -153,5 +153,41 @@ plt
     - 縦軸: 応答変数Yi
     - 横軸: データの順番i(i=1,2,3,...)
 
+- **問い**
+  - ランシーケンスプロットは以下の問いに解答可
+     1. 位置シフトあるか
+     2. 変動のシフトはあるか
+     3. 外れ値存在するか
+  - ランシーケンスプロットはまた、分析者にデータへのよい感覚をもたらす
 
+- **重要: 単変量という仮定の確認**
+  - 単変量データにおける既定モデル
+    - Y = constant + error
+  - 誤差は無作為、固定分布、固定位置と尺度と仮定
+  - モデルの妥当性はこの誤差に関する仮定による
+    - ランシーケンスプロットは固定位置と尺度の確認に有用
   
+  - より複雑なモデルにおいてさえ、誤差項に関するこの仮定は同じであることが多い
+  - 残差(非常に複雑なモデルからでも)のランシーケンスプロット
+    - 外れ値、位置と尺度のシフト確認に重要な役割
+
+― **関連技術**
+  - [散布図](https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm)
+  
+  - [ヒストグラム](https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm)
+  
+  - [自己相関プロット](https://www.itl.nist.gov/div898/handbook/eda/section3/autocopl.htm)
+  
+  - [ラグプロット](https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm)
+
+- **ケーススタディ**
+  - ランシーケンスプロット実例は[フィルター透過度](https://www.itl.nist.gov/div898/handbook/eda/section4/eda426.htm)のケーススタディで
+
+- **ソフトウエア**
+  - 統計ソフトウエアプログラムの最も一般的な適用
+
+
+## [1.3.3.15. Lag Plot](https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm)
+
+- **目的: 無作為性の確認**
+  - 
