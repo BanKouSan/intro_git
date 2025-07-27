@@ -132,7 +132,8 @@ knitr::opts_chunk$set(echo = FALSE)
     - これらに対してランシーケンスプロットが位置のシフト、スケール変化をきわめて明示的に示す
     - 外れ値も容易に検出可能
 
-― **サンプルプロット: 最後1/3のデータが位置シフト**
+
+- **サンプルプロット: 最後1/3のデータが位置シフト**
 
 ```{r run_sequence_sample, out.height=240, out.width=320,warning=FALSE, echo=TRUE}
 
@@ -145,12 +146,13 @@ plt <- ggplot(data=data, aes(x=x, y=V1)) + geom_point() +
 plt
 ```
 
-  - このサンプルプロットより
+  - このサンプルプロット
+    - データは[the MAVRO.DAT data set](https://www.itl.nist.gov/div898/handbook/datasets/MAVRO.DAT)より
     - 最後1/3のデータで位置のシフトが見て取れる
 
-- **定義: y(i) vs i**
+- **定義: $y_i$ vs i**
   - グラフの見方
-    - 縦軸: 応答変数Yi
+    - 縦軸: 応答変数$Y_i$
     - 横軸: データの順番i(i=1,2,3,...)
 
 - **問い**
@@ -171,7 +173,9 @@ plt
   - 残差(非常に複雑なモデルからでも)のランシーケンスプロット
     - 外れ値、位置と尺度のシフト確認に重要な役割
 
-― **関連技術**
+
+- **関連技術**
+
   - [散布図](https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm)
   
   - [ヒストグラム](https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm)
@@ -188,6 +192,7 @@ plt
 
 
 ## [1.3.3.15. Lag Plot](https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm)
+
 
 - **目的: 無作為性の確認**
   - データセット、時系列データに対して無作為性の確認
@@ -206,4 +211,55 @@ plt <- ggplot(data=data, aes(x=lag(V1,1), y=V1)) + geom_point() +
 plt
 ```
 
-  - 
+  - このラグプロットサンプルはデータは[the MAVRO.DAT data set](https://www.itl.nist.gov/div898/handbook/datasets/MAVRO.DAT)より
+  ‐ 線形パターンが見て取れる
+    - 非無作為であることを強く示唆
+    - 自己相関モデルが当てはまるのではとの示唆
+
+- **定義**
+  - ラグは固定された時間的ずれ
+    - 例えばY2とY7があればラグは7-2=**5**
+  - 任意のラグでグラフ生成出来るが、通常はラグ1を使用
+
+  - Y軸: Y(i) for all i
+  - X軸: Y(i-1) for all i
+
+- **問い**
+  - ラグプロットは以下疑問に答えてくれる
+     1. データは無作為(抽出)であるか
+     2. データの系統内で相関あるか
+     3. データに適するモデルは?
+     4. 外れ値はデータにあるか
+
+- **重要**
+  - 統計推定、検定手法のほとんどで無作為性が基本仮定にあり
+  - ラグプロットは研究者にとって日常的ツールであるべき
+
+- **例**
+  - 1.3.3.15.1 ~ 1.3.3.15.4 で見ていく
+
+- **関連技術**
+  - [自己相関プロット](https://www.itl.nist.gov/div898/handbook/eda/section3/autocopl.htm)
+  - [スペクトル](https://www.itl.nist.gov/div898/handbook/eda/section3/spectrum.htm)
+  - [ラン検定](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35d.htm)
+
+- **ケーススタディ**
+  - [ビーム偏向](https://www.itl.nist.gov/div898/handbook/eda/section4/eda425.htm)で実例見ていく
+
+- **ソフトウエア**
+  - ラグプロットを直接使用可能な統計ソフトウエアはない
+  - 本質的には2変数の散布図
+    - マクロ記述により多くの統計プログラムで使用可能に
+
+
+## [1.3.3.15.1. Lag Plot: Random Data](https://www.itl.nist.gov/div898/handbook/eda/section3/eda33f1.htm)
+
+- **ラグプロット**
+```{r lag_sample_random, out.height=240, out.width=320,warning=FALSE, echo=TRUE}
+
+
+```
+
+
+  
+  
