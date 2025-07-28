@@ -255,10 +255,32 @@ plt
 ## [1.3.3.15.1. Lag Plot: Random Data](https://www.itl.nist.gov/div898/handbook/eda/section3/eda33f1.htm)
 
 - **ラグプロット**
+
+
 ```{r lag_sample_random, out.height=240, out.width=320,warning=FALSE, echo=TRUE}
-
-
+data <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/NORMAL2.DAT", skip=25)
+plt <- ggplot(data=data, aes(x=lag(V1,1), y=V1)) + geom_point() + 
+  labs(title="1.3.3.15.1_Fig.1 LAG PLOT", x="Y(i-1)", y="Y(i)") +
+  scale_x_continuous(breaks=seq(-4, 3, 1)) +
+  scale_y_continuous(breaks=seq(-3, 3, 1))
+plt
 ```
+
+
+- **結論**
+  - 200個の正規乱数から作成した上記プロットから以下結論を得る
+     1. データは無作為
+     2. 自己相関は見られない
+     3. 外れ値もない
+
+- **議論**
+  - 上記はlag=1で作成したプロット
+  - 特定の構造は見られない
+  - ある値$Y_{i-1}$から$Y_i$の値を推測出来ない
+  - この無関係さが無作為性の本質
+
+
+## [1.3.3.15.2. Lag Plot: Moderate Autocorrelation](https://www.itl.nist.gov/div898/handbook/eda/section3/eda33f2.htm)
 
 
   
