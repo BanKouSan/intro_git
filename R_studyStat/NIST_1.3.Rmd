@@ -203,7 +203,7 @@ plt
 
 - **サンプルプロット**
 
-```{r lag_sample, out.height=240, out.width=320,warning=FALSE, echo=TRUE}
+```{r lag_sample, out.height=320, out.width=320,warning=FALSE, echo=TRUE}
 data <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/MAVRO.DAT", skip=25)
 plt <- ggplot(data=data, aes(x=lag(V1,1), y=V1)) + geom_point() + 
   labs(title="1.3.3.15_Fig.1 LAG PLOT", x="Y(i-1)", y="Y(i)") +
@@ -257,7 +257,7 @@ plt
 - **ラグプロット**
 
 
-```{r lag_sample_random, out.height=240, out.width=320,warning=FALSE, echo=TRUE}
+```{r lag_sample_random, out.height=320, out.width=320,warning=FALSE, echo=TRUE}
 data <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/NORMAL2.DAT", skip=25)
 plt <- ggplot(data=data, aes(x=lag(V1,1), y=V1)) + geom_point() + 
   labs(title="1.3.3.15.1_Fig.1 LAG PLOT", x="Y(i-1)", y="Y(i)") +
@@ -284,7 +284,7 @@ plt
 
 - **ラグプロット**
 
-```{r lag_sample_moderate_autocorrelation, out.height=240, out.width=320,warning=FALSE, echo=TRUE}
+```{r lag_sample_moderate_autocorrelation, out.height=320, out.width=320,warning=FALSE, echo=TRUE}
 data <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/FLICKER.DAT", skip=25)
 plt <- ggplot(data=data, aes(x=lag(V1,1), y=V1)) + geom_point() + 
   labs(title="1.3.3.15.2_Fig.1 LAG PLOT", x="Y(i-1)", y="Y(i)") +
@@ -319,7 +319,67 @@ plt
       - $Y_i=A_0+E_i$
 
 
-## 
-  
-  
-  
+## [1.3.3.15.3. Lag Plot: Strong Autocorrelation and Autoregressive Model](https://www.itl.nist.gov/div898/handbook/eda/section3/eda33f3.htm)
+
+- **ラグプロット**
+
+```{r lag_sample_strong_autocorrelation, out.height=320, out.width=320,warning=FALSE, echo=TRUE}
+data <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/RANDWALK.DAT", skip=25)
+plt <- ggplot(data=data, aes(x=lag(V1,1), y=V1)) + geom_point() + 
+  labs(title="1.3.3.15.3_Fig.1 LAG PLOT", x="Y(i-1)", y="Y(i)") +
+  scale_x_continuous(breaks=seq(-2, 8, 1)) +
+  scale_y_continuous(breaks=seq(-2, 8, 1))
+plt
+```
+
+
+- **結論**
+  - 上記プロットから得られる結論は以下
+     1. 強い正の自己相関を有する自己回帰モデルを基礎とする
+     2. 外れ値はない 
+
+- **議論**
+  - 対角線に沿って点が集まっていることに注意
+    - 強い正の自己相関を有するプロセスのラグプロットの特徴
+    - 高度に非無作為であり、観測値と次の観測値に強い関連性
+    - $Y_{i-1}$の観測値から$Y_i$がどのような値になるかの強い推測が可能
+
+  - プロセスが完全無作為である場合
+    - 現時点の観測から得た知見から次の観測に関する知見は事実上得られない
+  - プロセスが強い自己相関の場合
+    - $Y_{i-1}=3$だった場合の次の観測値$Y_i$が取りうる値の範囲が制限されている(今回の場合では2 ~ 4)
+    - 予測可能であることを示唆
+
+- **推奨される次工程**
+   1. 自己回帰モデルのパラメータ推測
+     - $Y_i=A_0+A_1*Y_{i-1}+E_i$
+       - $Y_i$と$Y_{i-1}$はラグプロットの正確な軸である
+       - このような推定はラグプロットから直接実施された線形回帰
+     - 自己相関モデルから得られた残差標準偏差
+     - 既定のモデルから得られた残差標準偏差よりかなり小さい
+     - $Y_i=A_0+E_i$
+   
+   2. システムを再検討し、強い自己相関の理由となる要因特定を進める
+      1. 研究対象の現象によるものか
+      2. 環境の変動によるものか
+      3. データ取得システムからの汚染によるものか
+   - 問題の原因がデータ取得システムからの汚染や持越しの場合
+     - システムが次のデータ点を取得する前に電子的に回復する時間が不足している可能性あり
+     - この場合は無作為性確保の為にサンプリング間隔をあける検討を推奨
+
+
+## [1.3.3.15.4. Lag Plot: Sinusoidal Models and Outliers](https://www.itl.nist.gov/div898/handbook/eda/section3/eda33f4.htm)
+
+- **ラグプロット**
+
+```{r lag_sample_sinusoidal_model, out.height=320, out.width=320,warning=FALSE, echo=TRUE}
+data <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/LEW.DAT", skip=25)
+plt <- ggplot(data=data, aes(x=lag(V1,1), y=V1)) + geom_point() + 
+  labs(title="1.3.3.15.4_Fig.1 LAG PLOT", x="Y(i-1)", y="Y(i)") +
+  scale_x_continuous(breaks=seq(-700, 400, 100)) +
+  scale_y_continuous(breaks=seq(-700, 400, 100))
+plt
+```
+
+
+- **結論**
